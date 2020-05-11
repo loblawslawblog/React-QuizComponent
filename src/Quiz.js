@@ -16,10 +16,14 @@ class Quiz extends Component
         }
         else
         {
-            display = <QuizQuestion quiz_question={quizData.quiz_questions[this.state.quiz_position-1]} />;
+            display = <QuizQuestion showNextQuestionHandler={this.showNextQuestion.bind(this)} quiz_question={quizData.quiz_questions[this.state.quiz_position-1]} />;
         }
 
         return <div>{display}</div>
+    }
+
+    showNextQuestion() {
+        this.setState((state) => {return {quiz_position: state.quiz_position + 1}});
     }
 
     constructor(props) {
