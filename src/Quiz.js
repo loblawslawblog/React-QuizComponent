@@ -12,7 +12,7 @@ class Quiz extends Component
         let display;
         if (isQuizEnd)
         {
-            display = <QuizEnd />;
+            display = <QuizEnd resetClickHandler={this.handleResetClick.bind(this)} />;
         }
         else
         {
@@ -24,6 +24,10 @@ class Quiz extends Component
 
     showNextQuestion() {
         this.setState((state) => {return {quiz_position: state.quiz_position + 1}});
+    }
+
+    handleResetClick() {
+        this.setState({quiz_position: 1});
     }
 
     constructor(props) {
